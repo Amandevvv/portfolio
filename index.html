@@ -653,6 +653,258 @@
     z-index: 9999;
     transition: width 0.1s;
   }
+
+  /* MOBILE RESPONSIVE */
+  @media (max-width: 768px) {
+    /* TICKER */
+    .ticker span {
+      font-size: 12px;
+      margin: 0 20px;
+    }
+
+    /* NAV */
+    nav {
+      flex-direction: column;
+    }
+    .nav-logo {
+      width: 100%;
+      justify-content: center;
+      border-right: none;
+      border-bottom: var(--border);
+      padding: 12px 16px;
+      font-size: 18px;
+    }
+    .nav-links {
+      width: 100%;
+      justify-content: space-between;
+      margin-left: 0;
+    }
+    .nav-links a {
+      padding: 0 16px;
+      font-size: 11px;
+      border-left: none;
+      border-right: var(--border);
+    }
+    .nav-links a:last-child {
+      border-right: none;
+    }
+
+    /* HERO */
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .hero-left {
+      border-right: none;
+      border-bottom: var(--border);
+      padding: 32px 20px;
+    }
+    .hero-headline {
+      font-size: clamp(48px, 12vw, 80px);
+    }
+    .hero-sub {
+      max-width: none;
+      margin: 24px 0;
+      font-size: 12px;
+    }
+    .hero-btns {
+      flex-direction: column;
+      width: 100%;
+    }
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      text-align: center;
+      border-left: var(--border);
+    }
+    .btn-secondary {
+      border-left: var(--border);
+      border-top: none;
+    }
+    .hero-stats {
+      flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1;
+      min-width: 50%;
+      padding: 16px 12px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 32px;
+    }
+
+    /* HERO RIGHT */
+    .hero-right {
+      min-height: 300px;
+    }
+    .hero-right-bottom {
+      padding: 16px 20px;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    /* MARQUEE */
+    .marquee-inner span {
+      font-size: 14px;
+      margin: 0 16px;
+    }
+
+    /* SECTION HEADER */
+    .section-header {
+      flex-direction: column;
+    }
+    .section-label {
+      writing-mode: horizontal-tb;
+      border-right: none;
+      border-bottom: var(--border);
+      padding: 12px 20px;
+    }
+    .section-title {
+      padding: 16px 20px;
+    }
+    .section-num {
+      padding: 0 20px 16px 0;
+      align-self: flex-start;
+    }
+
+    /* PROJECTS GRID */
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+    .project-card {
+      border-right: none;
+      padding: 24px 20px;
+    }
+    .project-card:nth-child(even) {
+      border-right: none;
+    }
+    .proj-title {
+      font-size: 24px;
+    }
+    .proj-desc {
+      font-size: 11px;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+    .skill-col {
+      border-right: none;
+      border-bottom: var(--border);
+      padding: 24px 20px;
+    }
+    .skill-col:last-child {
+      border-bottom: none;
+    }
+
+    /* EXPERIENCE */
+    .exp-row {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+    }
+    .exp-period {
+      border-right: none;
+      border-bottom: var(--border);
+      padding: 16px 20px;
+      padding-top: 20px;
+    }
+    .exp-content {
+      border-right: none;
+      border-bottom: var(--border);
+      padding: 16px 20px;
+    }
+    .exp-type {
+      border-right: none;
+      padding: 16px 20px 20px 20px;
+      justify-content: flex-start;
+    }
+    .exp-company {
+      font-size: 20px;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+    .about-left {
+      border-right: none;
+      border-bottom: var(--border);
+      padding: 32px 20px;
+    }
+    .about-right {
+      padding: 32px 20px;
+    }
+    .about-text {
+      font-size: 12px;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .contact-left {
+      border-right: none;
+      border-bottom: var(--border);
+      padding: 32px 20px;
+    }
+    .contact-big {
+      font-size: clamp(36px, 8vw, 60px);
+    }
+    .contact-right {
+      padding: 32px 20px;
+    }
+    .hire-big {
+      font-size: clamp(36px, 8vw, 60px);
+    }
+    .hire-sub {
+      font-size: 11px;
+    }
+    .hire-btn {
+      width: 100%;
+      text-align: center;
+      padding: 16px 32px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 16px 20px;
+      justify-content: center;
+      text-align: center;
+    }
+    .footer-links {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Extra small mobile adjustments */
+    .nav-links a {
+      padding: 0 12px;
+      font-size: 10px;
+    }
+    .hero-left {
+      padding: 24px 16px;
+    }
+    .project-card {
+      padding: 20px 16px;
+    }
+    .skill-col {
+      padding: 20px 16px;
+    }
+    .about-left, .about-right {
+      padding: 24px 16px;
+    }
+    .contact-left, .contact-right {
+      padding: 24px 16px;
+    }
+    .footer {
+      padding: 12px 16px;
+    }
+  }
 </style>
 </head>
 <body>
