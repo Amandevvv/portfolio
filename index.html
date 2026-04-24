@@ -721,8 +721,11 @@
   .modal-images-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin: 32px 0;
+    gap: 30px;
+    margin: 40px auto;
+    max-width: 900px;
+    justify-items: center;
+    align-items: start;
   }
   .modal-image-small {
     width: 100%;
@@ -730,12 +733,17 @@
     height: auto;
     max-height: 500px;
     object-fit: contain;
-    border: var(--border);
-    transition: transform 0.15s, box-shadow 0.15s;
+    border: 3px solid var(--black);
+    border-radius: 4px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    background: var(--white);
+    padding: 8px;
   }
   .modal-image-small:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transform: scale(1.03) translateY(-2px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    border-color: var(--yellow);
   }
   .modal-description {
     font-size: 14px;
@@ -1026,11 +1034,17 @@
     /* IMAGES GRID MOBILE */
     .modal-images-grid {
       grid-template-columns: 1fr;
-      gap: 16px;
+      gap: 24px;
+      margin: 32px auto;
+      max-width: 500px;
     }
     .modal-image-small {
       max-width: 100%;
-      max-height: 400px;
+      max-height: 350px;
+      padding: 6px;
+    }
+    .modal-image-small:hover {
+      transform: scale(1.02) translateY(-1px);
     }
   }
 </style>
