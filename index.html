@@ -726,7 +726,10 @@
   }
   .modal-image-small {
     width: 100%;
+    max-width: 400px;
     height: auto;
+    max-height: 500px;
+    object-fit: contain;
     border: var(--border);
     transition: transform 0.15s, box-shadow 0.15s;
   }
@@ -1024,6 +1027,10 @@
     .modal-images-grid {
       grid-template-columns: 1fr;
       gap: 16px;
+    }
+    .modal-image-small {
+      max-width: 100%;
+      max-height: 400px;
     }
   }
 </style>
