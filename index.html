@@ -677,22 +677,28 @@
   .modal-close {
     position: absolute;
     top: 20px; right: 20px;
-    width: 40px; height: 40px;
+    width: 60px; height: 60px;
     background: var(--black);
     color: var(--yellow);
-    border: none;
+    border: 3px solid var(--yellow);
     cursor: crosshair;
     font-family: 'Anton', sans-serif;
-    font-size: 20px;
+    font-size: 32px;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 10;
-    transition: background 0.15s;
+    transition: all 0.2s;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   }
   .modal-close:hover {
     background: var(--red);
     color: var(--white);
+    border-color: var(--white);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
   }
   .modal-header {
     padding: 32px;
@@ -1025,8 +1031,9 @@
     }
     .modal-close {
       top: 16px; right: 16px;
-      width: 32px; height: 32px;
-      font-size: 16px;
+      width: 50px; height: 50px;
+      font-size: 24px;
+      border-width: 2px;
     }
 
     /* IMAGES GRID MOBILE */
