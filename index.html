@@ -654,6 +654,92 @@
     transition: width 0.1s;
   }
 
+  /* PROJECT MODAL */
+  .project-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    z-index: 10000;
+    display: none;
+    overflow-y: auto;
+  }
+  .project-modal.active {
+    display: block;
+  }
+  .modal-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: var(--white);
+    border: var(--border);
+    position: relative;
+  }
+  .modal-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 40px; height: 40px;
+    background: var(--black);
+    color: var(--yellow);
+    border: none;
+    cursor: crosshair;
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background 0.15s;
+  }
+  .modal-close:hover {
+    background: var(--red);
+    color: var(--white);
+  }
+  .modal-header {
+    padding: 32px;
+    border-bottom: var(--border);
+  }
+  .modal-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+  }
+  .modal-category {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888;
+  }
+  .modal-body {
+    padding: 32px;
+  }
+  .modal-image {
+    width: 100%;
+    margin: 32px 0;
+    border: var(--border);
+  }
+  .modal-description {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 32px;
+  }
+  .modal-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+  .modal-tags span {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--black);
+    color: var(--white);
+    padding: 6px 14px;
+    border: 1px solid var(--black);
+  }
+
   /* MOBILE RESPONSIVE */
   @media (max-width: 768px) {
     /* TICKER */
@@ -904,6 +990,19 @@
     .footer {
       padding: 12px 16px;
     }
+
+    /* MODAL MOBILE */
+    .modal-content {
+      margin: 20px;
+    }
+    .modal-header, .modal-body {
+      padding: 20px;
+    }
+    .modal-close {
+      top: 16px; right: 16px;
+      width: 32px; height: 32px;
+      font-size: 16px;
+    }
   }
 </style>
 </head>
@@ -1071,9 +1170,6 @@
         <span class="proj-cat">Personal · Visual Exploration</span>
       </div>
       <div class="proj-title">DESIGN STYLE EXPLORATION</div>
-      <div style="margin: 20px 0; border: var(--border); overflow: hidden;">
-        <img src="images/infinite-fall.jpg" alt="The Infinite Fall - Graphic Design Exploration" style="width: 100%; height: auto; display: block;">
-      </div>
       <p class="proj-desc">
         Ongoing personal project exploring Brutalism, Neo-Brutalism, and
         Experimental UI. Studying typography, contrast, grid-breaking layouts,
@@ -1321,12 +1417,70 @@
   </div>
 </footer>
 
+<!-- PROJECT MODAL -->
+<div class="project-modal" id="projectModal">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">×</button>
+    <div class="modal-header">
+      <h2 class="modal-title" id="modalTitle">DESIGN STYLE EXPLORATION</h2>
+      <div class="modal-category" id="modalCategory">Personal · Visual Exploration</div>
+    </div>
+    <div class="modal-body">
+      <img src="images/infinite-fall.jpg" alt="The Infinite Fall - Graphic Design Exploration" class="modal-image" id="modalImage">
+      <div class="modal-description" id="modalDescription">
+        <p>Ongoing personal project exploring Brutalism, Neo-Brutalism, and Experimental UI. Studying typography, contrast, grid-breaking layouts, and bold color to build a recognizable personal design language.</p>
+        <p>Includes "The Infinite Fall" - a graphic design exploration of memory and trauma through monochromatic visual storytelling. This piece features falling figures against architectural elements, with integrated typography that creates vertical motion and emotional depth.</p>
+        <p>The work explores themes of memory, trauma, and the psychological weight of the past through visual metaphor. The monochromatic palette emphasizes the emotional gravity while the brutalist typography adds structural tension.</p>
+      </div>
+      <div class="modal-tags">
+        <span>Brutalism</span>
+        <span>Experimental</span>
+        <span>Typography</span>
+        <span>Graphic Design</span>
+        <span>Visual Narrative</span>
+        <span>Monochromatic</span>
+        <span>2026 →</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   window.addEventListener('scroll', () => {
     const scrollTop = document.documentElement.scrollTop;
     const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const progress = (scrollTop / docHeight) * 100;
     document.getElementById('scrollLine').style.width = progress + '%';
+  });
+
+  // Modal functionality
+  const modal = document.getElementById('projectModal');
+  const modalClose = document.getElementById('modalClose');
+  const designExplorationCard = document.querySelector('.project-card:nth-child(3)');
+
+  designExplorationCard.addEventListener('click', () => {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  modalClose.addEventListener('click', () => {
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
   });
 </script>
 </body>
