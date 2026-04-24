@@ -1509,20 +1509,43 @@
   const modalClose = document.getElementById('modalClose');
   const designExplorationCard = document.querySelector('.project-card:nth-child(3)');
 
-  designExplorationCard.addEventListener('click', () => {
+  // Helper function to open modal
+  function openModal() {
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
-  });
+  }
 
-  modalClose.addEventListener('click', () => {
+  // Helper function to close modal
+  function closeModal() {
     modal.classList.remove('active');
     document.body.style.overflow = 'auto';
+  }
+
+  // Open modal - both click and touch events
+  designExplorationCard.addEventListener('click', openModal);
+  designExplorationCard.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    openModal();
   });
 
+  // Close modal - both click and touch events
+  modalClose.addEventListener('click', closeModal);
+  modalClose.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    closeModal();
+  });
+
+  // Close modal by clicking outside - both click and touch events
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
-      modal.classList.remove('active');
-      document.body.style.overflow = 'auto';
+      closeModal();
+    }
+  });
+
+  modal.addEventListener('touchend', (e) => {
+    if (e.target === modal) {
+      e.preventDefault();
+      closeModal();
     }
   });
 
