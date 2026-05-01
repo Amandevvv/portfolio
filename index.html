@@ -2008,24 +2008,24 @@
   const projectHAndM = document.querySelector('.project-item:nth-child(1)');
   const projectTravis = document.querySelector('.project-item:nth-child(2)');
 
-  // Open Project H and M image gallery with both images
+  // Open Project H and M image modal (single combined image)
   projectHAndM.addEventListener('click', () => {
-    openImageGallery('Project H and M', ['images/h.jpg', 'images/m.jpg'], 'Two complementary web interface designs. Project H (left image) features modern design with clean typography using React and CSS Grid. Project M (right image) brings minimalist approach with thoughtful component hierarchy using Vue.js and Tailwind CSS. Click thumbnails below to switch between images.');
+    openImageModal('Project H and M', 'images/H and M.jpg', 'Combined web interface design showcasing both Project H and Project M. Features modern design elements with clean typography, interactive components, and thoughtful layouts. Built with React, Vue.js, CSS Grid, and Tailwind CSS.');
   });
 
   projectHAndM.addEventListener('touchend', (e) => {
     e.preventDefault();
-    openImageGallery('Project H and M', ['images/h.jpg', 'images/m.jpg'], 'Two complementary web interface designs. Project H (left image) features modern design with clean typography using React and CSS Grid. Project M (right image) brings minimalist approach with thoughtful component hierarchy using Vue.js and Tailwind CSS. Click thumbnails below to switch between images.');
+    openImageModal('Project H and M', 'images/H and M.jpg', 'Combined web interface design showcasing both Project H and Project M. Features modern design elements with clean typography, interactive components, and thoughtful layouts. Built with React, Vue.js, CSS Grid, and Tailwind CSS.');
   });
 
   // Open Project Travis image modal
   projectTravis.addEventListener('click', () => {
-    openImageModal('Project Travis', 'images/travis.jpg', 'Dynamic web application with advanced UI patterns. Features complex state management and sophisticated user interaction flows built with Angular and TypeScript.');
+    openImageModal('Project Travis', 'images/Travis.jpg', 'Dynamic web application with advanced UI patterns. Features complex state management and sophisticated user interaction flows built with Angular and TypeScript.');
   });
 
   projectTravis.addEventListener('touchend', (e) => {
     e.preventDefault();
-    openImageModal('Project Travis', 'images/travis.jpg', 'Dynamic web application with advanced UI patterns. Features complex state management and sophisticated user interaction flows built with Angular and TypeScript.');
+    openImageModal('Project Travis', 'images/Travis.jpg', 'Dynamic web application with advanced UI patterns. Features complex state management and sophisticated user interaction flows built with Angular and TypeScript.');
   });
 
   // Close image modal - both click and touch events
