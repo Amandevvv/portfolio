@@ -829,6 +829,70 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
+
+  /* Project Image Modal Styles */
+  .project-image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .project-image-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+  }
+  .image-modal-content {
+    background: var(--white);
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .image-modal-header {
+    padding: 24px;
+    border-bottom: var(--border);
+    text-align: center;
+  }
+  .image-modal-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 24px;
+    margin: 0;
+    color: var(--black);
+  }
+  .image-modal-body {
+    padding: 24px;
+    text-align: center;
+  }
+  .image-container {
+    margin-bottom: 24px;
+  }
+  .project-display-image {
+    max-width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    border: var(--border);
+    border-radius: 4px;
+  }
+  .image-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+  }
+  .project-item {
+    cursor: pointer;
+  }
+  .project-item:hover .project-visual {
+    transform: translateY(-2px);
+  }
   .modal-description {
     font-size: 14px;
     line-height: 1.8;
@@ -1700,6 +1764,24 @@
   </div>
 </div>
 
+<!-- PROJECT IMAGE MODAL -->
+<div class="project-image-modal" id="projectImageModal">
+  <div class="image-modal-content">
+    <button class="modal-close" id="imageModalClose">×</button>
+    <div class="image-modal-header">
+      <h2 class="image-modal-title" id="imageModalTitle">Project</h2>
+    </div>
+    <div class="image-modal-body">
+      <div class="image-container">
+        <img id="projectImage" src="" alt="Project Image" class="project-display-image">
+      </div>
+      <div class="image-description" id="imageDescription">
+        <p>Project details and description.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
@@ -1718,6 +1800,13 @@
   const webUIModal = document.getElementById('webUIModal');
   const webUIModalClose = document.getElementById('webUIModalClose');
   const webUICard = document.querySelector('.project-card:nth-child(5)');
+
+  // Project Image Modal functionality
+  const projectImageModal = document.getElementById('projectImageModal');
+  const imageModalClose = document.getElementById('imageModalClose');
+  const projectImage = document.getElementById('projectImage');
+  const imageModalTitle = document.getElementById('imageModalTitle');
+  const imageDescription = document.getElementById('imageDescription');
 
   // Helper function to open modal
   function openModal() {
@@ -1740,6 +1829,21 @@
   // Helper function to close Web UI modal
   function closeWebUIModal() {
     webUIModal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Helper function to open image modal
+  function openImageModal(projectName, imagePath, description) {
+    imageModalTitle.textContent = projectName;
+    projectImage.src = imagePath;
+    imageDescription.innerHTML = `<p>${description}</p>`;
+    projectImageModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Helper function to close image modal
+  function closeImageModal() {
+    projectImageModal.classList.remove('active');
     document.body.style.overflow = 'auto';
   }
 
@@ -1799,6 +1903,51 @@
     }
   });
 
+  // Project H and M click functionality
+  const projectH = document.querySelector('.project-item:nth-child(1)');
+  const projectM = document.querySelector('.project-item:nth-child(2)');
+
+  // Open Project H image modal
+  projectH.addEventListener('click', () => {
+    openImageModal('Project H', 'images/h.jpg', 'Modern web interface with clean typography and interactive components. Features responsive grid layouts and smooth micro-interactions built with React and CSS Grid.');
+  });
+
+  projectH.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    openImageModal('Project H', 'images/h.jpg', 'Modern web interface with clean typography and interactive components. Features responsive grid layouts and smooth micro-interactions built with React and CSS Grid.');
+  });
+
+  // Open Project M image modal
+  projectM.addEventListener('click', () => {
+    openImageModal('Project M', 'images/m.jpg', 'Minimalist design approach with focus on user experience. Clean interface with thoughtful component hierarchy and intuitive navigation built with Vue.js and Tailwind CSS.');
+  });
+
+  projectM.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    openImageModal('Project M', 'images/m.jpg', 'Minimalist design approach with focus on user experience. Clean interface with thoughtful component hierarchy and intuitive navigation built with Vue.js and Tailwind CSS.');
+  });
+
+  // Close image modal - both click and touch events
+  imageModalClose.addEventListener('click', closeImageModal);
+  imageModalClose.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    closeImageModal();
+  });
+
+  // Close image modal by clicking outside - both click and touch events
+  projectImageModal.addEventListener('click', (e) => {
+    if (e.target === projectImageModal) {
+      closeImageModal();
+    }
+  });
+
+  projectImageModal.addEventListener('touchend', (e) => {
+    if (e.target === projectImageModal) {
+      e.preventDefault();
+      closeImageModal();
+    }
+  });
+
   // Close on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('active')) {
@@ -1807,6 +1956,10 @@
       }
       if (e.key === 'Escape' && webUIModal.classList.contains('active')) {
         webUIModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+      if (e.key === 'Escape' && projectImageModal.classList.contains('active')) {
+        projectImageModal.classList.remove('active');
         document.body.style.overflow = 'auto';
       }
     });
