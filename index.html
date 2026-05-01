@@ -900,6 +900,28 @@
   }
   .gallery-main {
     margin-bottom: 16px;
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .gallery-main::-webkit-scrollbar {
+    width: 8px;
+  }
+  .gallery-main::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  .gallery-main::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  .gallery-main::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .project-display-image {
+    width: 100%;
+    height: auto;
+    max-width: none;
+    display: block;
   }
   .gallery-thumbnails {
     display: flex;
