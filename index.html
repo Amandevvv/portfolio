@@ -747,7 +747,87 @@
   }
   .modal-image-small:hover {
     transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.4), 0 15px 35px rgba(0,0,0,0.3);
+    box-shadow: 0 25px 70px rgba(0,0,0,0.4), 0 15px 35px rgba(0,0,0,0.3);
+  }
+
+  /* Web UI Showcase Styles */
+  .web-ui-showcase {
+    margin: 32px 0;
+  }
+  .project-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+  .project-item {
+    background: var(--white);
+    border: var(--border);
+    padding: 24px;
+    transition: all 0.3s ease;
+  }
+  .project-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  }
+  .project-visual {
+    position: relative;
+    height: 120px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .project-letter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Anton', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--white);
+    z-index: 2;
+  }
+  .project-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--black) 0%, var(--yellow) 100%);
+    opacity: 0.9;
+  }
+  .project-item:nth-child(2) .project-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  .project-item:nth-child(3) .project-bg {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+  .project-info h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--black);
+  }
+  .project-info p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 16px;
+  }
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .project-tech span {
+    background: var(--black);
+    color: var(--white);
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   .modal-description {
     font-size: 14px;
@@ -1266,16 +1346,16 @@
       </div>
       <div class="proj-title">WEB UI DESIGNS</div>
       <p class="proj-desc">
-        Collection of web interface designs showcasing modern UI patterns and
-        user experience principles. Features responsive layouts, interactive components,
-        and thoughtful micro-interactions. Exploring various design systems and
-        component libraries for web applications.
+        Collection of web interface designs featuring H, M, and Travis projects.
+        Modern UI patterns with responsive layouts, interactive components,
+        and thoughtful micro-interactions. Exploring various design systems
+        and component libraries for web applications.
       </p>
       <div class="proj-tags">
         <span>Web Design</span>
         <span>UI/UX</span>
         <span>Responsive</span>
-        <span>Components</span>
+        <span>H · M · Travis</span>
       </div>
       <div class="proj-arrow">↗</div>
     </div>
@@ -1542,6 +1622,84 @@
   </div>
 </div>
 
+<!-- WEB UI MODAL -->
+<div class="project-modal" id="webUIModal">
+  <div class="modal-content">
+    <button class="modal-close" id="webUIModalClose">×</button>
+    <div class="modal-header">
+      <h2 class="modal-title">WEB UI DESIGNS</h2>
+      <div class="modal-category">Web · UI Design</div>
+    </div>
+    <div class="modal-body">
+      <div class="web-ui-showcase">
+        <div class="project-showcase-grid">
+          <div class="project-item">
+            <div class="project-visual">
+              <div class="project-letter">H</div>
+              <div class="project-bg"></div>
+            </div>
+            <div class="project-info">
+              <h3>Project H</h3>
+              <p>Modern web interface with clean typography and interactive components. Features responsive grid layouts and smooth micro-interactions.</p>
+              <div class="project-tech">
+                <span>React</span>
+                <span>CSS Grid</span>
+                <span>Responsive</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-item">
+            <div class="project-visual">
+              <div class="project-letter">M</div>
+              <div class="project-bg"></div>
+            </div>
+            <div class="project-info">
+              <h3>Project M</h3>
+              <p>Minimalist design approach with focus on user experience. Clean interface with thoughtful component hierarchy and intuitive navigation.</p>
+              <div class="project-tech">
+                <span>Vue.js</span>
+                <span>Tailwind</span>
+                <span>Components</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-item">
+            <div class="project-visual">
+              <div class="project-letter">T</div>
+              <div class="project-bg"></div>
+            </div>
+            <div class="project-info">
+              <h3>Travis</h3>
+              <p>Dynamic web application with advanced UI patterns. Features complex state management and sophisticated user interaction flows.</p>
+              <div class="project-tech">
+                <span>Angular</span>
+                <span>TypeScript</span>
+                <span>State Mgmt</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-description">
+        <p>Collection of three distinct web UI design projects, each showcasing different approaches to modern web interface design. From clean minimalism to dynamic complexity, these projects demonstrate versatility in web design patterns and user experience principles.</p>
+        <p>Each project explores different frameworks and design systems while maintaining consistent attention to responsive design, accessibility, and user-centered design principles.</p>
+      </div>
+      
+      <div class="modal-tags">
+        <span>Web Design</span>
+        <span>UI/UX</span>
+        <span>Responsive</span>
+        <span>Components</span>
+        <span>Modern Frameworks</span>
+        <span>Interactive</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
@@ -1556,6 +1714,11 @@
   const modalClose = document.getElementById('modalClose');
   const designExplorationCard = document.querySelector('.project-card:nth-child(3)');
 
+  // Web UI Modal functionality
+  const webUIModal = document.getElementById('webUIModal');
+  const webUIModalClose = document.getElementById('webUIModalClose');
+  const webUICard = document.querySelector('.project-card:nth-child(5)');
+
   // Helper function to open modal
   function openModal() {
     modal.classList.add('active');
@@ -1568,6 +1731,18 @@
     document.body.style.overflow = 'auto';
   }
 
+  // Helper function to open Web UI modal
+  function openWebUIModal() {
+    webUIModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Helper function to close Web UI modal
+  function closeWebUIModal() {
+    webUIModal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
   // Open modal - both click and touch events
   designExplorationCard.addEventListener('click', openModal);
   designExplorationCard.addEventListener('touchend', (e) => {
@@ -1575,11 +1750,25 @@
     openModal();
   });
 
+  // Open Web UI modal - both click and touch events
+  webUICard.addEventListener('click', openWebUIModal);
+  webUICard.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    openWebUIModal();
+  });
+
   // Close modal - both click and touch events
   modalClose.addEventListener('click', closeModal);
   modalClose.addEventListener('touchend', (e) => {
     e.preventDefault();
     closeModal();
+  });
+
+  // Close Web UI modal - both click and touch events
+  webUIModalClose.addEventListener('click', closeWebUIModal);
+  webUIModalClose.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    closeWebUIModal();
   });
 
   // Close modal by clicking outside - both click and touch events
@@ -1596,10 +1785,28 @@
     }
   });
 
+  // Close Web UI modal by clicking outside - both click and touch events
+  webUIModal.addEventListener('click', (e) => {
+    if (e.target === webUIModal) {
+      closeWebUIModal();
+    }
+  });
+
+  webUIModal.addEventListener('touchend', (e) => {
+    if (e.target === webUIModal) {
+      e.preventDefault();
+      closeWebUIModal();
+    }
+  });
+
   // Close on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('active')) {
         modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+      if (e.key === 'Escape' && webUIModal.classList.contains('active')) {
+        webUIModal.classList.remove('active');
         document.body.style.overflow = 'auto';
       }
     });
