@@ -1863,6 +1863,27 @@
     projectImage.src = imagePath;
     imageDescription.innerHTML = `<p>${description}</p>`;
     galleryThumbnails.innerHTML = ''; // Clear thumbnails for single image
+    
+    // Add error handling for missing images
+    projectImage.onerror = function() {
+      this.style.display = 'none';
+      const errorMsg = document.createElement('div');
+      errorMsg.className = 'image-error-message';
+      errorMsg.innerHTML = `<p>Image not found: ${imagePath}</p><p>Please add the image to the images folder.</p>`;
+      errorMsg.style.padding = '40px';
+      errorMsg.style.background = '#f5f5f5';
+      errorMsg.style.border = '2px dashed #ccc';
+      errorMsg.style.textAlign = 'center';
+      errorMsg.style.color = '#666';
+      this.parentNode.appendChild(errorMsg);
+    };
+    
+    projectImage.onload = function() {
+      this.style.display = 'block';
+      const existingError = this.parentNode.querySelector('.image-error-message');
+      if (existingError) existingError.remove();
+    };
+    
     projectImageModal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -1875,6 +1896,26 @@
     // Set main image to first image
     projectImage.src = images[0];
     
+    // Add error handling for main image
+    projectImage.onerror = function() {
+      this.style.display = 'none';
+      const errorMsg = document.createElement('div');
+      errorMsg.className = 'image-error-message';
+      errorMsg.innerHTML = `<p>Image not found</p><p>Please add images to the images folder:</p><ul style="text-align:left;display:inline-block;">${images.map(img => `<li>${img}</li>`).join('')}</ul>`;
+      errorMsg.style.padding = '40px';
+      errorMsg.style.background = '#f5f5f5';
+      errorMsg.style.border = '2px dashed #ccc';
+      errorMsg.style.textAlign = 'center';
+      errorMsg.style.color = '#666';
+      this.parentNode.appendChild(errorMsg);
+    };
+    
+    projectImage.onload = function() {
+      this.style.display = 'block';
+      const existingError = this.parentNode.querySelector('.image-error-message');
+      if (existingError) existingError.remove();
+    };
+    
     // Create thumbnails
     galleryThumbnails.innerHTML = '';
     images.forEach((imgPath, index) => {
@@ -1882,6 +1923,12 @@
       thumbnail.src = imgPath;
       thumbnail.className = 'gallery-thumbnail' + (index === 0 ? ' active' : '');
       thumbnail.alt = `Image ${index + 1}`;
+      
+      // Add error handling for thumbnails
+      thumbnail.onerror = function() {
+        this.style.display = 'none';
+      };
+      
       thumbnail.addEventListener('click', () => {
         projectImage.src = imgPath;
         // Update active state
