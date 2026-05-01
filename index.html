@@ -1410,16 +1410,16 @@
       </div>
       <div class="proj-title">WEB UI DESIGNS</div>
       <p class="proj-desc">
-        Collection of 3 web interface designs: Project H, Project M, and Project Travis.
-        Click on H and M to view their design images. Modern UI patterns with
-        responsive layouts, interactive components, and thoughtful micro-interactions.
-        Exploring various design systems and component libraries for web applications.
+        Collection of 2 web interface designs: Project H and M, and Project Travis.
+        Click to view design images. Modern UI patterns with responsive layouts,
+        interactive components, and thoughtful micro-interactions. Exploring various
+        design systems and component libraries for web applications.
       </p>
       <div class="proj-tags">
         <span>Web Design</span>
         <span>UI/UX</span>
         <span>Responsive</span>
-        <span>3 Projects</span>
+        <span>2 Projects</span>
         <span>H · M · Travis</span>
       </div>
       <div class="proj-arrow">↗</div>
@@ -1700,31 +1700,18 @@
         <div class="project-showcase-grid">
           <div class="project-item">
             <div class="project-visual">
-              <div class="project-letter">H</div>
+              <div class="project-letter">H+M</div>
               <div class="project-bg"></div>
             </div>
             <div class="project-info">
-              <h3>Project H</h3>
-              <p>Modern web interface with clean typography and interactive components. Features responsive grid layouts and smooth micro-interactions.</p>
+              <h3>Project H and M</h3>
+              <p>Two complementary web interface designs. Project H features modern design with clean typography and interactive components using React and CSS Grid. Project M brings minimalist approach with thoughtful component hierarchy using Vue.js and Tailwind CSS.</p>
               <div class="project-tech">
                 <span>React</span>
-                <span>CSS Grid</span>
-                <span>Responsive</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="project-item">
-            <div class="project-visual">
-              <div class="project-letter">M</div>
-              <div class="project-bg"></div>
-            </div>
-            <div class="project-info">
-              <h3>Project M</h3>
-              <p>Minimalist design approach with focus on user experience. Clean interface with thoughtful component hierarchy and intuitive navigation.</p>
-              <div class="project-tech">
                 <span>Vue.js</span>
+                <span>CSS Grid</span>
                 <span>Tailwind</span>
+                <span>Responsive</span>
                 <span>Components</span>
               </div>
             </div>
@@ -1750,8 +1737,8 @@
       </div>
       
       <div class="modal-description">
-        <p>Collection of 3 web UI design projects: Project H, Project M, and Project Travis. Each showcases different approaches to modern web interface design, from clean minimalism to dynamic complexity.</p>
-        <p><strong>Click on H and M to view their design images.</strong> Project Travis showcases the concept and technical approach. Each project explores different frameworks and design systems while maintaining consistent attention to responsive design, accessibility, and user-centered design principles.</p>
+        <p>Collection of 2 web UI design projects: Project H and M, and Project Travis. Each showcases different approaches to modern web interface design, from clean minimalism to dynamic complexity.</p>
+        <p><strong>Click on Project H and M to view their design images.</strong> Project Travis showcases the concept and technical approach. Each project explores different frameworks and design systems while maintaining consistent attention to responsive design, accessibility, and user-centered design principles.</p>
       </div>
       
       <div class="modal-tags">
@@ -1906,27 +1893,27 @@
   });
 
   // Project H and M click functionality
-  const projectH = document.querySelector('.project-item:nth-child(1)');
-  const projectM = document.querySelector('.project-item:nth-child(2)');
+  const projectHAndM = document.querySelector('.project-item:nth-child(1)');
+  const projectTravis = document.querySelector('.project-item:nth-child(2)');
 
-  // Open Project H image modal
-  projectH.addEventListener('click', () => {
-    openImageModal('Project H', 'images/h.jpg', 'Modern web interface with clean typography and interactive components. Features responsive grid layouts and smooth micro-interactions built with React and CSS Grid.');
+  // Open Project H and M image modal
+  projectHAndM.addEventListener('click', () => {
+    openImageModal('Project H and M', 'images/h.jpg', 'Two complementary web interface designs. Project H features modern design with clean typography using React and CSS Grid. Project M brings minimalist approach with thoughtful component hierarchy using Vue.js and Tailwind CSS.');
   });
 
-  projectH.addEventListener('touchend', (e) => {
+  projectHAndM.addEventListener('touchend', (e) => {
     e.preventDefault();
-    openImageModal('Project H', 'images/h.jpg', 'Modern web interface with clean typography and interactive components. Features responsive grid layouts and smooth micro-interactions built with React and CSS Grid.');
+    openImageModal('Project H and M', 'images/h.jpg', 'Two complementary web interface designs. Project H features modern design with clean typography using React and CSS Grid. Project M brings minimalist approach with thoughtful component hierarchy using Vue.js and Tailwind CSS.');
   });
 
-  // Open Project M image modal
-  projectM.addEventListener('click', () => {
-    openImageModal('Project M', 'images/m.jpg', 'Minimalist design approach with focus on user experience. Clean interface with thoughtful component hierarchy and intuitive navigation built with Vue.js and Tailwind CSS.');
+  // Open Project Travis image modal
+  projectTravis.addEventListener('click', () => {
+    openImageModal('Project Travis', 'images/travis.jpg', 'Dynamic web application with advanced UI patterns. Features complex state management and sophisticated user interaction flows built with Angular and TypeScript.');
   });
 
-  projectM.addEventListener('touchend', (e) => {
+  projectTravis.addEventListener('touchend', (e) => {
     e.preventDefault();
-    openImageModal('Project M', 'images/m.jpg', 'Minimalist design approach with focus on user experience. Clean interface with thoughtful component hierarchy and intuitive navigation built with Vue.js and Tailwind CSS.');
+    openImageModal('Project Travis', 'images/travis.jpg', 'Dynamic web application with advanced UI patterns. Features complex state management and sophisticated user interaction flows built with Angular and TypeScript.');
   });
 
   // Close image modal - both click and touch events
