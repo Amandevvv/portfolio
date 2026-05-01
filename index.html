@@ -893,6 +893,36 @@
   .project-item:hover .project-visual {
     transform: translateY(-2px);
   }
+
+  /* Image Gallery Styles */
+  .image-gallery {
+    margin-bottom: 24px;
+  }
+  .gallery-main {
+    margin-bottom: 16px;
+  }
+  .gallery-thumbnails {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .gallery-thumbnail {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .gallery-thumbnail:hover {
+    border-color: var(--yellow);
+    transform: scale(1.05);
+  }
+  .gallery-thumbnail.active {
+    border-color: var(--black);
+  }
   .modal-description {
     font-size: 14px;
     line-height: 1.8;
@@ -1761,8 +1791,13 @@
       <h2 class="image-modal-title" id="imageModalTitle">Project</h2>
     </div>
     <div class="image-modal-body">
-      <div class="image-container">
-        <img id="projectImage" src="" alt="Project Image" class="project-display-image">
+      <div class="image-gallery" id="imageGallery">
+        <div class="gallery-main">
+          <img id="projectImage" src="" alt="Project Image" class="project-display-image">
+        </div>
+        <div class="gallery-thumbnails" id="galleryThumbnails">
+          <!-- Thumbnails will be added dynamically -->
+        </div>
       </div>
       <div class="image-description" id="imageDescription">
         <p>Project details and description.</p>
@@ -1796,6 +1831,7 @@
   const projectImage = document.getElementById('projectImage');
   const imageModalTitle = document.getElementById('imageModalTitle');
   const imageDescription = document.getElementById('imageDescription');
+  const galleryThumbnails = document.getElementById('galleryThumbnails');
 
   // Helper function to open modal
   function openModal() {
@@ -1821,11 +1857,40 @@
     document.body.style.overflow = 'auto';
   }
 
-  // Helper function to open image modal
+  // Helper function to open image modal with single image
   function openImageModal(projectName, imagePath, description) {
     imageModalTitle.textContent = projectName;
     projectImage.src = imagePath;
     imageDescription.innerHTML = `<p>${description}</p>`;
+    galleryThumbnails.innerHTML = ''; // Clear thumbnails for single image
+    projectImageModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Helper function to open image modal with gallery (multiple images)
+  function openImageGallery(projectName, images, description) {
+    imageModalTitle.textContent = projectName;
+    imageDescription.innerHTML = `<p>${description}</p>`;
+    
+    // Set main image to first image
+    projectImage.src = images[0];
+    
+    // Create thumbnails
+    galleryThumbnails.innerHTML = '';
+    images.forEach((imgPath, index) => {
+      const thumbnail = document.createElement('img');
+      thumbnail.src = imgPath;
+      thumbnail.className = 'gallery-thumbnail' + (index === 0 ? ' active' : '');
+      thumbnail.alt = `Image ${index + 1}`;
+      thumbnail.addEventListener('click', () => {
+        projectImage.src = imgPath;
+        // Update active state
+        galleryThumbnails.querySelectorAll('.gallery-thumbnail').forEach(t => t.classList.remove('active'));
+        thumbnail.classList.add('active');
+      });
+      galleryThumbnails.appendChild(thumbnail);
+    });
+    
     projectImageModal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -1896,14 +1961,14 @@
   const projectHAndM = document.querySelector('.project-item:nth-child(1)');
   const projectTravis = document.querySelector('.project-item:nth-child(2)');
 
-  // Open Project H and M image modal
+  // Open Project H and M image gallery with both images
   projectHAndM.addEventListener('click', () => {
-    openImageModal('Project H and M', 'images/h.jpg', 'Two complementary web interface designs. Project H features modern design with clean typography using React and CSS Grid. Project M brings minimalist approach with thoughtful component hierarchy using Vue.js and Tailwind CSS.');
+    openImageGallery('Project H and M', ['images/h.jpg', 'images/m.jpg'], 'Two complementary web interface designs. Project H (left image) features modern design with clean typography using React and CSS Grid. Project M (right image) brings minimalist approach with thoughtful component hierarchy using Vue.js and Tailwind CSS. Click thumbnails below to switch between images.');
   });
 
   projectHAndM.addEventListener('touchend', (e) => {
     e.preventDefault();
-    openImageModal('Project H and M', 'images/h.jpg', 'Two complementary web interface designs. Project H features modern design with clean typography using React and CSS Grid. Project M brings minimalist approach with thoughtful component hierarchy using Vue.js and Tailwind CSS.');
+    openImageGallery('Project H and M', ['images/h.jpg', 'images/m.jpg'], 'Two complementary web interface designs. Project H (left image) features modern design with clean typography using React and CSS Grid. Project M (right image) brings minimalist approach with thoughtful component hierarchy using Vue.js and Tailwind CSS. Click thumbnails below to switch between images.');
   });
 
   // Open Project Travis image modal
