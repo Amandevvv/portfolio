@@ -918,7 +918,15 @@
     z-index: 2;
   }
   .project-item:nth-child(1) .project-preview {
-    background: linear-gradient(135deg, #1a1a1a 0%, #e8e200 150%);
+    background: #fff;
+    border: 2px solid var(--black);
+  }
+  .preview-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 20px;
+    display: block;
   }
   .project-item:nth-child(2) .project-preview {
     background: linear-gradient(135deg, #1a1a1a 0%, #667eea 150%);
@@ -1787,8 +1795,7 @@
         <div class="project-showcase-grid">
           <div class="project-item" data-project="hm">
             <div class="project-preview">
-              <div class="preview-icon">H+M</div>
-              <div class="preview-label">Web UI Design</div>
+              <img src="images/H and M.jpg" alt="H&M Logo" class="preview-logo">
             </div>
             <div class="project-info">
               <h3>Project H and M</h3>
