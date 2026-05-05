@@ -884,6 +884,26 @@
     transform: translateY(-2px);
   }
 
+  /* Project Thumbnail Styles */
+  .project-thumbnail {
+    margin: 16px 0;
+    border: var(--border);
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .project-thumbnail:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .thumb-img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+  }
+
   /* Image Gallery Styles */
   .image-gallery {
     margin-bottom: 24px;
@@ -1750,6 +1770,9 @@
               <div class="project-letter">H+M</div>
               <div class="project-bg"></div>
             </div>
+            <div class="project-thumbnail">
+              <img src="images/H and M.jpg" alt="Project H and M Preview" class="thumb-img">
+            </div>
             <div class="project-info">
               <h3>Project H and M</h3>
               <p>Two complementary web interface designs. Project H features modern design with clean typography and interactive components using React and CSS Grid. Project M brings minimalist approach with thoughtful component hierarchy using Vue.js and Tailwind CSS.</p>
@@ -1768,6 +1791,9 @@
             <div class="project-visual">
               <div class="project-letter">T</div>
               <div class="project-bg"></div>
+            </div>
+            <div class="project-thumbnail">
+              <img src="images/Travis.jpg" alt="Project Travis Preview" class="thumb-img">
             </div>
             <div class="project-info">
               <h3>Project Travis</h3>
@@ -2024,6 +2050,8 @@
   // Project H and M click functionality
   const projectHAndM = document.querySelector('.project-item:nth-child(1)');
   const projectTravis = document.querySelector('.project-item:nth-child(2)');
+  const projectHAndMThumb = document.querySelector('.project-item:nth-child(1) .project-thumbnail');
+  const projectTravisThumb = document.querySelector('.project-item:nth-child(2) .project-thumbnail');
 
   // Open Project H and M image modal (single combined image)
   projectHAndM.addEventListener('click', () => {
@@ -2035,6 +2063,14 @@
     openImageModal('Project H and M', 'images/H and M.jpg', 'Combined web interface design showcasing both Project H and Project M. Features modern design elements with clean typography, interactive components, and thoughtful layouts. Built with React, Vue.js, CSS Grid, and Tailwind CSS.');
   });
 
+  // Thumbnail click for Project H and M
+  if (projectHAndMThumb) {
+    projectHAndMThumb.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openImageModal('Project H and M', 'images/H and M.jpg', 'Combined web interface design showcasing both Project H and Project M. Features modern design elements with clean typography, interactive components, and thoughtful layouts. Built with React, Vue.js, CSS Grid, and Tailwind CSS.');
+    });
+  }
+
   // Open Project Travis image modal
   projectTravis.addEventListener('click', () => {
     openImageModal('Project Travis', 'images/Travis.jpg', 'Dynamic web application with advanced UI patterns. Features complex state management and sophisticated user interaction flows built with Angular and TypeScript.');
@@ -2044,6 +2080,14 @@
     e.preventDefault();
     openImageModal('Project Travis', 'images/Travis.jpg', 'Dynamic web application with advanced UI patterns. Features complex state management and sophisticated user interaction flows built with Angular and TypeScript.');
   });
+
+  // Thumbnail click for Project Travis
+  if (projectTravisThumb) {
+    projectTravisThumb.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openImageModal('Project Travis', 'images/Travis.jpg', 'Dynamic web application with advanced UI patterns. Features complex state management and sophisticated user interaction flows built with Angular and TypeScript.');
+    });
+  }
 
   // Close image modal - both click and touch events
   imageModalClose.addEventListener('click', closeImageModal);
